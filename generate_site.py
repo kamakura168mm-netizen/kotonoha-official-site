@@ -27,14 +27,30 @@ ROOT = Path(__file__).parent
 DOCS = ROOT / "docs"
 CUSTOM_DOMAIN = "kotonoha-official.com"
 
-# 2026-08-02時点：本編動画URL未確定のため全章とも暫定でチャンネルURLへ転送。
+# 2026-08-02時点：koto_t01は本編動画URL未確定のため全章とも暫定でチャンネルURLへ転送。
 # 本編公開後、このBOOKSのvideo_urlを差し替えて再生成するだけで全ページに反映される。
 PROVISIONAL_VIDEO_URL = "https://www.youtube.com/@kotonohaeigo"
+
+# koto_y06：販売中の#001書籍が指す旧動画(Xwlnqn1rgzs)が7/30の英語chリセットで削除された実害修理。
+# 新版wIawOZqYL6Eは8/6 21:38公開予約＝それまでは全章ともチャンネルURLへ暫定転送。
+# 公開後、KOTO_Y06_VIDEO_URLを実URLへ差し替えて再生成・push（司令塔の合図で実施）。
+KOTO_Y06_VIDEO_URL = PROVISIONAL_VIDEO_URL  # 8/6 21:38公開後に "https://www.youtube.com/watch?v=wIawOZqYL6E" へ差し替え
+
+# kko_d03：mCdUIhr2OdIは公開中のため初回から実タイムスタンプへ転送。
+KKO_D03_VIDEO_ID = "mCdUIhr2OdI"
+
+
+def _load_chapters(path: Path) -> list[tuple[int, str, float]]:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return [(c["chapter_no"], c["label"], c["start_sec"]) for c in data]
+
 
 BOOKS = [
     {
         "source_id": "koto_t01",
         "book_title": "「恋愛で使う英語」英語フレーズ150 #002",
+        "channel": "ことのは英語",
+        "video_url": PROVISIONAL_VIDEO_URL,
         "chapters": [
             (1, "第一印象のあいさつ"),
             (2, "名前を聞く・自己紹介"),
@@ -49,6 +65,23 @@ BOOKS = [
             (11, "気持ちを確かめ合う"),
             (12, "次のデートを約束する"),
         ],
+    },
+    {
+        "source_id": "koto_y06",
+        "book_title": "寝る前に一日をふりかえる 英語フレーズ #001",
+        "channel": "ことのは英語",
+        "video_url": KOTO_Y06_VIDEO_URL,
+        "chapters": [
+            (no, label) for no, label, _sec in
+            _load_chapters(ROOT.parent / "動画連動フレーズ集" / "koto_y06" / "章構成.json")
+        ],
+    },
+    {
+        "source_id": "kko_d03",
+        "book_title": "はじめての自己紹介 韓国語フレーズ #001",
+        "channel": "ことのは韓国語",
+        "video_url": None,  # 章ごとにタイムスタンプ付きURLを個別生成（下記参照）
+        "chapters_with_sec": _load_chapters(ROOT.parent / "動画連動フレーズ集" / "kko_d03" / "章構成.json"),
     },
 ]
 
@@ -86,11 +119,11 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 </head>
 <body>
   <div class="card">
-    <div class="brand">ことのは英語｜動画連動フレーズ集</div>
+    <div class="brand">{brand}｜動画連動フレーズ集</div>
     <p>まもなく動画へ移動します。</p>
     <p>移動しない場合は <a href="{url}">こちら（{label}）</a> をクリックしてください。</p>
   </div>
-<script>window.location.replace("{url}");</script>
+<script>window.location.replace({url_js});</script>
 </body>
 </html>
 """
@@ -116,11 +149,13 @@ ROOT_INDEX_TEMPLATE = """<!DOCTYPE html>
 """
 
 
-def build_page_html(title: str, target: RedirectTarget) -> str:
+def build_page_html(title: str, target: RedirectTarget, brand: str) -> str:
     return PAGE_TEMPLATE.format(
         title=xml_escape(title),
         url=xml_escape(target.video_url),
+        url_js=json.dumps(target.video_url),
         label=xml_escape(target.fallback_label),
+        brand=xml_escape(brand),
     )
 
 
@@ -141,19 +176,29 @@ def generate() -> list[dict]:
     go_dir.mkdir(exist_ok=True)
 
     mapping = []
-    target = RedirectTarget(video_url=PROVISIONAL_VIDEO_URL)
     for book in BOOKS:
-        for chapter_no, chapter_label in book["chapters"]:
+        if "chapters_with_sec" in book:
+            # 章ごとに固有のタイムスタンプURLを持つ書籍（例: kko_d03）
+            entries = [
+                (no, label, f"https://www.youtube.com/watch?v={KKO_D03_VIDEO_ID}&t={int(sec)}s")
+                for no, label, sec in book["chapters_with_sec"]
+            ]
+        else:
+            entries = [(no, label, book["video_url"]) for no, label in book["chapters"]]
+
+        for chapter_no, chapter_label, video_url in entries:
             slug = slug_for(book["source_id"], chapter_no)
             title = f"{book['book_title']}｜第{chapter_no}章「{chapter_label}」動画リンク"
             page_dir = go_dir / slug
             page_dir.mkdir(parents=True, exist_ok=True)
-            (page_dir / "index.html").write_text(build_page_html(title, target), encoding="utf-8")
+            target = RedirectTarget(video_url=video_url)
+            html = build_page_html(title, target, book["channel"])
+            (page_dir / "index.html").write_text(html, encoding="utf-8")
             mapping.append({
                 "source_id": book["source_id"],
                 "chapter_no": chapter_no,
                 "chapter_label": chapter_label,
-                "old_hatena_url": f"https://kotonoha-links.hatenablog.com/entry/go-{slug}",
+                "redirect_target": video_url,
                 "new_url": f"https://{CUSTOM_DOMAIN}/go/{slug}/",
             })
 

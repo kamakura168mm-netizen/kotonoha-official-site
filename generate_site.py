@@ -39,6 +39,17 @@ KOTO_Y06_VIDEO_URL = PROVISIONAL_VIDEO_URL  # 8/6 21:38公開後に "https://www
 # kko_d03：mCdUIhr2OdIは公開中のため初回から実タイムスタンプへ転送。
 KKO_D03_VIDEO_ID = "mCdUIhr2OdI"
 
+# 韓国語chの暫定転送先（book.json記載のチャンネルURL＝英語のPROVISIONAL_VIDEO_URLに相当）。
+KKO_PROVISIONAL_CHANNEL_URL = "https://www.youtube.com/channel/UCwRaNI6nFMYQ9fBUb2fdCZA"
+
+# koto_y10：#003書籍。本編は8/10 21:38公開予定＝それまで全章ともチャンネルURLへ暫定転送。
+# 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
+KOTO_Y10_VIDEO_URL = PROVISIONAL_VIDEO_URL  # 8/10 21:38公開後に実URLへ差し替え
+
+# kko_t01：#002書籍。本編は8/6 21:38公開予定（koto_y06とセット）＝それまで全章ともチャンネルURLへ暫定転送。
+# 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
+KKO_T01_VIDEO_URL = KKO_PROVISIONAL_CHANNEL_URL  # 8/6 21:38公開後に実URLへ差し替え
+
 
 def _load_chapters(path: Path) -> list[tuple[int, str, float]]:
     data = json.loads(path.read_text(encoding="utf-8"))
@@ -82,6 +93,46 @@ BOOKS = [
         "channel": "ことのは韓国語",
         "video_url": None,  # 章ごとにタイムスタンプ付きURLを個別生成（下記参照）
         "chapters_with_sec": _load_chapters(ROOT.parent / "動画連動フレーズ集" / "kko_d03" / "章構成.json"),
+    },
+    {
+        "source_id": "koto_y10",
+        "book_title": "「寝る前に自分をいたわる」英語フレーズ155 #003",
+        "channel": "ことのは英語",
+        "video_url": KOTO_Y10_VIDEO_URL,
+        "chapters": [
+            (1, "今夜はあなたのための時間"),
+            (2, "今日一日、本当によくがんばった"),
+            (3, "完璧じゃなくていい"),
+            (4, "弱音を吐いてもいい"),
+            (5, "体と心の力を抜く"),
+            (6, "気づかれない小さながんばり"),
+            (7, "誰かと比べなくていい"),
+            (8, "その気持ちのままでいい"),
+            (9, "あなたを支えているもの"),
+            (10, "明日はまた大丈夫"),
+            (11, "眠りへの橋渡し"),
+            (12, "おやすみ、そしてありがとう"),
+        ],
+    },
+    {
+        "source_id": "kko_t01",
+        "book_title": "「恋愛で使う韓国語」韓国語フレーズ150 #002",
+        "channel": "ことのは韓国語",
+        "video_url": KKO_T01_VIDEO_URL,
+        "chapters": [
+            (1, "声をかける・第一印象"),
+            (2, "名前を聞く・自己紹介"),
+            (3, "見た目をほめる"),
+            (4, "センス・雰囲気をほめる"),
+            (5, "連絡先を交換する"),
+            (6, "軽く誘ってみる"),
+            (7, "デートの計画を立てる"),
+            (8, "「썸」を意識する"),
+            (9, "「반말」に切り替える"),
+            (10, "好意を伝える"),
+            (11, "真剣な気持ちを話す・気持ちを確かめ合う"),
+            (12, "付き合う・次の約束"),
+        ],
     },
 ]
 

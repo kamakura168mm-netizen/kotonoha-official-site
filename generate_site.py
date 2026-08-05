@@ -55,6 +55,11 @@ KKO_T01_VIDEO_URL = KKO_PROVISIONAL_CHANNEL_URL  # 8/6 21:38公開後に実URL�
 # 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
 KKO_T02_VIDEO_URL = KKO_PROVISIONAL_CHANNEL_URL  # 8/12 21:38公開後に実URLへ差し替え
 
+# kko_t03：#004書籍（書籍本体は未制作・QR飛び先の先行インフラとして中継ページのみ先行制作）。
+# 本編の公開日程は本メッセージ時点で未確定＝それまで全章ともチャンネルURLへ暫定転送。
+# 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
+KKO_T03_VIDEO_URL = KKO_PROVISIONAL_CHANNEL_URL  # 公開日程確定・公開後に実URLへ差し替え
+
 
 def _load_chapters(path: Path) -> list[tuple[int, str, float]]:
     data = json.loads(path.read_text(encoding="utf-8"))
@@ -157,6 +162,26 @@ BOOKS = [
             (10, "謝る"),
             (11, "相手の話を聞く・許す"),
             (12, "仲直り・前より深まる関係"),
+        ],
+    },
+    {
+        "source_id": "kko_t03",
+        "book_title": "「別れと失恋で使う韓国語」韓国語フレーズ150 #004",
+        "channel": "ことのは韓国語",
+        "video_url": KKO_T03_VIDEO_URL,
+        "chapters": [
+            (1, "気持ちが冷めていく"),
+            (2, "心の距離を感じる"),
+            (3, "別れを意識し始める"),
+            (4, "気持ちを確かめ合う"),
+            (5, "別れを切り出す・告げられる"),
+            (6, "未練が残る"),
+            (7, "一人の夜"),
+            (8, "友人に話す・慰められる"),
+            (9, "忘れようとする"),
+            (10, "ふとした瞬間に思い出す"),
+            (11, "気持ちの整理がつく"),
+            (12, "新しい一歩を踏み出す"),
         ],
     },
 ]

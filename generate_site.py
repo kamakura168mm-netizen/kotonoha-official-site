@@ -34,7 +34,7 @@ PROVISIONAL_VIDEO_URL = "https://www.youtube.com/@kotonohaeigo"
 # koto_y06：販売中の#001書籍が指す旧動画(Xwlnqn1rgzs)が7/30の英語chリセットで削除された実害修理。
 # 新版wIawOZqYL6Eは8/6 21:38公開予約＝それまでは全章ともチャンネルURLへ暫定転送。
 # 公開後、KOTO_Y06_VIDEO_URLを実URLへ差し替えて再生成・push（司令塔の合図で実施）。
-KOTO_Y06_VIDEO_URL = PROVISIONAL_VIDEO_URL  # 8/6 21:38公開後に "https://www.youtube.com/watch?v=wIawOZqYL6E" へ差し替え
+KOTO_Y06_VIDEO_URL = "https://youtu.be/wIawOZqYL6E"  # 8/6 21:38公開・public実測済み(2026-08-06司令塔合図)
 
 # kko_d03：mCdUIhr2OdIは公開中のため初回から実タイムスタンプへ転送。
 KKO_D03_VIDEO_ID = "mCdUIhr2OdI"
@@ -48,7 +48,7 @@ KOTO_Y10_VIDEO_URL = PROVISIONAL_VIDEO_URL  # 8/10 21:38公開後に実URLへ差
 
 # kko_t01：#002書籍。本編は8/6 21:38公開予定（koto_y06とセット）＝それまで全章ともチャンネルURLへ暫定転送。
 # 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
-KKO_T01_VIDEO_URL = KKO_PROVISIONAL_CHANNEL_URL  # 8/6 21:38公開後に実URLへ差し替え
+KKO_T01_VIDEO_URL = "https://youtu.be/RAKVipS86E4"  # 8/6 21:38公開・public実測済み(2026-08-06司令塔合図)
 
 # kko_t02：#003書籍（書籍本体は未制作・QR飛び先の先行インフラとして中継ページのみ先行制作）。
 # 本編は8/12(水) 21:38公開予定＝それまで全章ともチャンネルURLへ暫定転送。

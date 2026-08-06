@@ -60,6 +60,11 @@ KKO_T02_VIDEO_URL = KKO_PROVISIONAL_CHANNEL_URL  # 8/12 21:38公開後に実URL�
 # 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
 KKO_T03_VIDEO_URL = KKO_PROVISIONAL_CHANNEL_URL  # 公開日程確定・公開後に実URLへ差し替え
 
+# koto_t02：#004書籍「セクハラになる英語・ならない英語」（book.json記載の号数。司令塔発注メッセージは
+# #005表記だったが、原稿/book.jsonを正として#004を採用）。本編は未公開のためチャンネルURLへ暫定転送。
+# 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
+KOTO_T02_VIDEO_URL = PROVISIONAL_VIDEO_URL  # 公開後に実URLへ差し替え
+
 
 def _load_chapters(path: Path) -> list[tuple[int, str, float]]:
     data = json.loads(path.read_text(encoding="utf-8"))
@@ -182,6 +187,26 @@ BOOKS = [
             (10, "ふとした瞬間に思い出す"),
             (11, "気持ちの整理がつく"),
             (12, "新しい一歩を踏み出す"),
+        ],
+    },
+    {
+        "source_id": "koto_t02",
+        "book_title": "「セクハラになる英語・ならない英語」英語フレーズ150 #004",
+        "channel": "ことのは英語",
+        "video_url": KOTO_T02_VIDEO_URL,
+        "chapters": [
+            (1, "安全な褒め言葉の基本形"),
+            (2, "外見を褒める境界線"),
+            (3, "服装・見た目への言及"),
+            (4, "体型・年齢の話題【危険度集中】"),
+            (5, "職場での距離感"),
+            (6, "誘い方の境界線"),
+            (7, "しつこい誘い・繰り返しのアプローチ"),
+            (8, "不快だと伝える英語"),
+            (9, "きっぱり断る英語"),
+            (10, "指摘・拒否を受け止める英語"),
+            (11, "誤解に気づいて謝る英語"),
+            (12, "気持ちよく話せる関係へ"),
         ],
     },
 ]

@@ -31,6 +31,9 @@ CUSTOM_DOMAIN = "kotonoha-official.com"
 # 本編公開後、このBOOKSのvideo_urlを差し替えて再生成するだけで全ページに反映される。
 PROVISIONAL_VIDEO_URL = "https://www.youtube.com/@kotonohaeigo"
 
+# koto_t01：#002書籍。本編は8/8 22:5x頃公開・橋検証全項目合格を司令塔がAPI実測で確認済み(2026-08-08司令塔合図)。
+KOTO_T01_VIDEO_URL = "https://youtu.be/4V-n_WSkz4A"
+
 # koto_y06：販売中の#001書籍が指す旧動画(Xwlnqn1rgzs)が7/30の英語chリセットで削除された実害修理。
 # 新版wIawOZqYL6Eは8/6 21:38公開予約＝それまでは全章ともチャンネルURLへ暫定転送。
 # 公開後、KOTO_Y06_VIDEO_URLを実URLへ差し替えて再生成・push（司令塔の合図で実施）。
@@ -84,7 +87,7 @@ BOOKS = [
         "source_id": "koto_t01",
         "book_title": "「恋愛で使う英語」英語フレーズ150 #002",
         "channel": "ことのは英語",
-        "video_url": PROVISIONAL_VIDEO_URL,
+        "video_url": KOTO_T01_VIDEO_URL,
         "chapters": [
             (1, "第一印象のあいさつ"),
             (2, "名前を聞く・自己紹介"),

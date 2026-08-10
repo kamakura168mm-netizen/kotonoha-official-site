@@ -45,18 +45,17 @@ KKO_D03_VIDEO_ID = "mCdUIhr2OdI"
 # 韓国語chの暫定転送先（book.json記載のチャンネルURL＝英語のPROVISIONAL_VIDEO_URLに相当）。
 KKO_PROVISIONAL_CHANNEL_URL = "https://www.youtube.com/channel/UCwRaNI6nFMYQ9fBUb2fdCZA"
 
-# koto_y10：#003書籍。本編は8/10 21:38公開予定＝それまで全章ともチャンネルURLへ暫定転送。
-# 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
-KOTO_Y10_VIDEO_URL = PROVISIONAL_VIDEO_URL  # 8/10 21:38公開後に実URLへ差し替え
+# koto_y10：#003書籍。本編は8/10 21:38公開（司令塔第28期がAPI実測でpublic確認済み・21:39:09）。
+KOTO_Y10_VIDEO_URL = "https://youtu.be/1oagjWeUC5s"
 
 # kko_t01：#002書籍。本編は8/6 21:38公開予定（koto_y06とセット）＝それまで全章ともチャンネルURLへ暫定転送。
 # 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
 KKO_T01_VIDEO_URL = "https://youtu.be/RAKVipS86E4"  # 8/6 21:38公開・public実測済み(2026-08-06司令塔合図)
 
 # kko_t02：#003書籍（書籍本体は未制作・QR飛び先の先行インフラとして中継ページのみ先行制作）。
-# 本編は8/12(水) 21:38公開予定＝それまで全章ともチャンネルURLへ暫定転送。
-# 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
-KKO_T02_VIDEO_URL = KKO_PROVISIONAL_CHANNEL_URL  # 8/12 21:38公開後に実URLへ差し替え
+# 本編は8/10 21:38公開（司令塔第28期がAPI実測でpublic確認済み・21:39:09）。
+# ※コメント上は当初8/12(水)予定だったが前倒しで8/10に確定（2026-08-09夜ドライランでAPI実測・publishAt=2026-08-10T12:38:00Z確認済み）。
+KKO_T02_VIDEO_URL = "https://youtu.be/OThI_ipiW6c"
 
 # kko_t03：#004書籍（書籍本体は未制作・QR飛び先の先行インフラとして中継ページのみ先行制作）。
 # 本編の公開日程は本メッセージ時点で未確定＝それまで全章ともチャンネルURLへ暫定転送。

@@ -69,7 +69,7 @@ KOTO_T02_VIDEO_URL = PROVISIONAL_VIDEO_URL  # 公開後に実URLへ差し替え
 
 # koto_s08：#005書籍「寝る前の前向きなひとこと」。本編は未公開のためチャンネルURLへ暫定転送。
 # 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
-KOTO_S08_VIDEO_URL = PROVISIONAL_VIDEO_URL  # 公開後に実URLへ差し替え
+KOTO_S08_VIDEO_URL = "https://youtu.be/az2Jpd_szsw"  # 2026-08-13 21:39:14 JST public確認・司令塔第32期代行(Sonnetワーカー)実施
 
 # koto_d01：#006書籍「中学英語・毎日の基本」。本編は未公開のためチャンネルURLへ暫定転送。
 # 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。

@@ -75,6 +75,10 @@ KOTO_S08_VIDEO_URL = "https://youtu.be/az2Jpd_szsw"  # 2026-08-13 21:39:14 JST p
 # 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
 KOTO_D01_VIDEO_URL = PROVISIONAL_VIDEO_URL  # 公開後に実URLへ差し替え
 
+# kko_t05：#006書籍「気遣い（ヌンチ）で使う韓国語」。本編は2026-08-18 21:38:22 JST公開済み
+# （KDPライブ提出第5期がvideos.list実測でprivacyStatus=public確認済み・2026-08-19）。
+KKO_T05_VIDEO_URL = "https://youtu.be/3325PNj6enQ"
+
 
 def _load_chapters(path: Path) -> list[tuple[int, str, float]]:
     data = json.loads(path.read_text(encoding="utf-8"))
@@ -257,6 +261,27 @@ BOOKS = [
             (10, "週末の予定を話す"),
             (11, "お礼とちょっとした謝罪"),
             (12, "一日を振り返って"),
+        ],
+    },
+    {
+        "source_id": "kko_t05",
+        "book_title": "「気遣い（ヌンチ）で使う韓国語」韓国語フレーズ150 #006",
+        "channel": "ことのは韓国語",
+        "video_url": KKO_T05_VIDEO_URL,
+        "chapters": [
+            (1, "相手の様子にさりげなく気づく"),
+            (2, "さりげなく声をかける"),
+            (3, "忙しそうな相手を気遣う"),
+            (4, "体調を気遣う"),
+            (5, "謝罪と労いが同居する韓国語"),
+            (6, "눈치という感覚そのもの"),
+            (7, "遠慮を遠慮させる"),
+            (8, "ご馳走する・奢る文化の気遣い"),
+            (9, "小さな贈り物・気持ちを渡す文化"),
+            (10, "別れ際の気遣い"),
+            (11, "落ち込んでいる人への気遣い"),
+            (12, "集団の中での気遣い"),
+            (13, "気遣いを受けた側の感謝"),
         ],
     },
 ]

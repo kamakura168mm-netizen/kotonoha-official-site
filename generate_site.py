@@ -318,7 +318,7 @@ BOOKS = [
     },
     {
         "source_id": "kko_t10",
-        "book_title": "聞こえるのに分からない、乗り物の韓国語150フレーズ #008",
+        "book_title": "韓国の地下鉄・バス・タクシーにひとりで乗れる 韓国語フレーズ150 #008",
         "channel": "ことのは韓国語",
         "video_url": KKO_T10_VIDEO_URL,
         "chapters": [

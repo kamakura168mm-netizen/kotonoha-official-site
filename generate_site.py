@@ -81,6 +81,10 @@ KOTO_D01_VIDEO_URL = "https://youtu.be/K_rUDKgCeTw"
 # （KDPライブ提出第5期がvideos.list実測でprivacyStatus=public確認済み・2026-08-19）。
 KKO_T05_VIDEO_URL = "https://youtu.be/3325PNj6enQ"
 
+# koto_e03：#016書籍「気まずくならない、英語の断り方150フレーズ」。本編は2026-08-25 21:38:27 JST公開済み
+# （公開スケジュール管理レーンがvideos.list実測で確認・司令塔39期経由でKDPライブ提出第5期へ着手GO）。
+KOTO_E03_VIDEO_URL = "https://youtu.be/FsmqlPykGkc"
+
 
 def _load_chapters(path: Path) -> list[tuple[int, str, float]]:
     data = json.loads(path.read_text(encoding="utf-8"))
@@ -284,6 +288,27 @@ BOOKS = [
             (11, "落ち込んでいる人への気遣い"),
             (12, "集団の中での気遣い"),
             (13, "気遣いを受けた側の感謝"),
+        ],
+    },
+    {
+        "source_id": "koto_e03",
+        "book_title": "気まずくならない、英語の断り方150フレーズ #016",
+        "channel": "ことのは英語",
+        "video_url": KOTO_E03_VIDEO_URL,
+        "chapters": [
+            (1, "誘いを断る"),
+            (2, "頼まれごとを断る"),
+            (3, "厚意・支払いを遠慮する"),
+            (4, "お酒を断る"),
+            (5, "告白を断る"),
+            (6, "仕事の依頼を断る"),
+            (7, "きっぱり伝える"),
+            (8, "断られた時の受け止め方"),
+            (9, "代案を出して断る"),
+            (10, "家族・パートナーに断る"),
+            (11, "やわらかいクッション言葉"),
+            (12, "断った後のフォロー"),
+            (13, "ノーは自分を大切にすること"),
         ],
     },
 ]

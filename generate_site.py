@@ -99,6 +99,16 @@ KKO_T04_VIDEO_URL = "https://youtu.be/e2qCAW0D_Sw"
 # 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
 KOTO_E04_VIDEO_URL = PROVISIONAL_VIDEO_URL  # 公開後に実URLへ差し替え
 
+# koto_e01：#008書籍「英語面接で使えるフレーズ」。本編は2026-08-29 21:38公開予約済み
+# （video_id=K6zmAQjlHbI・2026-08-27時点で未公開・YouTube API実測でpublishAt確認済み）。
+# 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
+KOTO_E01_VIDEO_URL = PROVISIONAL_VIDEO_URL  # 公開後に実URLへ差し替え
+
+# koto_s02：#007書籍「道案内と電車の英語」。本編は2026-08-31 21:38公開予約済み
+# （video_id=_kNVpKSZyqk・2026-08-27時点で未公開・YouTube API実測でpublishAt確認済み）。
+# 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
+KOTO_S02_VIDEO_URL = PROVISIONAL_VIDEO_URL  # 公開後に実URLへ差し替え
+
 
 def _load_chapters(path: Path) -> list[tuple[int, str, float]]:
     data = json.loads(path.read_text(encoding="utf-8"))
@@ -386,6 +396,42 @@ BOOKS = [
             (11, "謝罪を受け止める・関係を戻す"),
             (12, "対立を和らげる英語特有の一言"),
             (13, "「怒ってもいい」という着地"),
+        ],
+    },
+    {
+        "source_id": "koto_e01",
+        "book_title": "「英語面接で使えるフレーズ」英語フレーズ150 #008",
+        "channel": "ことのは英語",
+        "video_url": KOTO_E01_VIDEO_URL,
+        "chapters": [
+            (1, "英語面接の受付・あいさつ"),
+            (2, "英語面接 自己紹介の基本"),
+            (3, "英語で職務経歴を話す"),
+            (4, "英語面接 志望動機の伝え方"),
+            (5, "英語面接 強みのアピール"),
+            (6, "英語面接 弱みの答え方"),
+            (7, "転職理由を英語で伝える"),
+            (8, "英語 面接 エピソード（STAR法）"),
+            (9, "会社について聞かれる英語面接の質問"),
+            (10, "英語面接 逆質問（キャリア編）"),
+            (11, "給与交渉・条件を英語で"),
+            (12, "オンライン面接 英語表現"),
+            (13, "面接のお礼・フォローアップメール英語"),
+        ],
+    },
+    {
+        "source_id": "koto_s02",
+        "book_title": "「道案内と電車の英語」英語フレーズ150 #007",
+        "channel": "ことのは英語",
+        "video_url": KOTO_S02_VIDEO_URL,
+        "chapters": [
+            (1, "道を尋ねる最初の一言"),
+            (2, "切符・改札"),
+            (3, "駅構内・ホーム"),
+            (4, "電車・バスに乗る"),
+            (5, "降りる・タクシー"),
+            (6, "道に迷った・助けを求める"),
+            (7, "お礼・別れ"),
         ],
     },
 ]

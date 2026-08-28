@@ -94,10 +94,9 @@ KKO_T10_VIDEO_URL = "https://youtu.be/MAolNaiIMJM"
 # （KDPライブ提出第6期がvideos.list実測でprivacyStatus=public確認済み・video_id=e2qCAW0D_Sw）。
 KKO_T04_VIDEO_URL = "https://youtu.be/e2qCAW0D_Sw"
 
-# koto_e04：#017書籍「我慢しすぎない、英語の怒り方・クレーム150フレーズ」。本編は2026-08-28 21:38公開予約済み
-# （video_id=oOcnH5a19m8・2026-08-27時点で未公開）＝それまで全章ともチャンネルURLへ暫定転送。
-# 公開後、実動画URLへ差し替えて再生成・push（司令塔の合図で実施）。
-KOTO_E04_VIDEO_URL = PROVISIONAL_VIDEO_URL  # 公開後に実URLへ差し替え
+# koto_e04：#017書籍「我慢しすぎない、英語の怒り方・クレーム150フレーズ」。
+# 2026-08-28 21:38:19 JST公開実測確認（司令塔42期検収OK）＝実動画URLへ差し替え済み。
+KOTO_E04_VIDEO_URL = "https://youtu.be/oOcnH5a19m8"
 
 # koto_e01：#008書籍「英語面接で使えるフレーズ」。本編は2026-08-29 21:38公開予約済み
 # （video_id=K6zmAQjlHbI・2026-08-27時点で未公開・YouTube API実測でpublishAt確認済み）。
